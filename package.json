@@ -1,0 +1,29 @@
+{
+    "name": "modern-calculator",
+    "version": "1.0.0",
+    "description": "A beautiful, mobile-responsive calculator with modern dark theme",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx serve .",
+        "dev": "npx serve .",
+        "deploy": "vercel --prod"
+    },
+    "keywords": [
+        "calculator",
+        "dark-theme",
+        "responsive",
+        "javascript",
+        "html",
+        "css"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/modern-calculator.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/modern-calculator/issues"
+    },
+    "homepage": "https://github.com/yourusername/modern-calculator#readme"
+}

@@ -1,0 +1,326 @@
+/* ==================== DESIGN SYSTEM ==================== */
+:root {
+    /* Color Palette - Dark Theme */
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-calculator: #1e1e1e;
+    --bg-display: #141414;
+    
+    /* Button Colors */
+    --btn-number: #2a2a2a;
+    --btn-number-hover: #353535;
+    --btn-operator: #ff9500;
+    --btn-operator-hover: #ffaa33;
+    --btn-function: #505050;
+    --btn-function-hover: #656565;
+    --btn-equals: #34c759;
+    --btn-equals-hover: #4cd964;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-display: #ffffff;
+    
+    /* Shadows & Effects */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --glow-operator: 0 0 20px rgba(255, 149, 0, 0.3);
+    --glow-equals: 0 0 20px rgba(52, 199, 89, 0.3);
+    
+    /* Spacing */
+    --gap-sm: 0.5rem;
+    --gap-md: 1rem;
+    --gap-lg: 1.5rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-size-display-lg: 3rem;
+    --font-size-display-sm: 1.25rem;
+    --font-size-btn: 1.5rem;
+}
+
+/* ==================== RESET & BASE ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    padding: var(--gap-md);
+    overflow-x: hidden;
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+    width: 100%;
+    max-width: 420px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== CALCULATOR ==================== */
+.calculator {
+    background: var(--bg-calculator);
+    border-radius: var(--radius-lg);
+    padding: var(--gap-lg);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==================== DISPLAY ==================== */
+.display-container {
+    background: var(--bg-display);
+    border-radius: var(--radius-md);
+    padding: var(--gap-lg);
+    margin-bottom: var(--gap-lg);
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+.previous-operand {
+    color: var(--text-secondary);
+    font-size: var(--font-size-display-sm);
+    font-weight: 400;
+    min-height: 1.5rem;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+}
+
+.current-operand {
+    color: var(--text-display);
+    font-size: var(--font-size-display-lg);
+    font-weight: 600;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+    line-height: 1.2;
+}
+
+/* ==================== BUTTONS GRID ==================== */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-md);
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    background: var(--btn-number);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: var(--font-size-btn);
+    font-weight: 500;
+    font-family: var(--font-family);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    background: var(--btn-number-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Button Variants */
+.btn-operator {
+    background: var(--btn-operator);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-operator:hover {
+    background: var(--btn-operator-hover);
+    box-shadow: var(--glow-operator);
+}
+
+.btn-function {
+    background: var(--btn-function);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-function:hover {
+    background: var(--btn-function-hover);
+}
+
+.btn-equals {
+    background: var(--btn-equals);
+    color: white;
+    font-weight: 700;
+}
+
+.btn-equals:hover {
+    background: var(--btn-equals-hover);
+    box-shadow: var(--glow-equals);
+}
+
+.btn-zero {
+    grid-column: span 2;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Tablets and smaller */
+@media (max-width: 768px) {
+    :root {
+        --font-size-display-lg: 2.5rem;
+        --font-size-display-sm: 1.1rem;
+        --font-size-btn: 1.3rem;
+    }
+    
+    .calculator {
+        padding: var(--gap-md);
+    }
+    
+    .btn {
+        padding: 1.25rem;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    :root {
+        --font-size-display-lg: 2rem;
+        --font-size-display-sm: 1rem;
+        --font-size-btn: 1.2rem;
+        --gap-md: 0.75rem;
+    }
+    
+    body {
+        padding: var(--gap-sm);
+    }
+    
+    .calculator {
+        padding: var(--gap-md);
+        border-radius: var(--radius-md);
+    }
+    
+    .display-container {
+        min-height: 100px;
+        padding: var(--gap-md);
+    }
+    
+    .btn {
+        padding: 1rem;
+    }
+    
+    .buttons-grid {
+        gap: var(--gap-sm);
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+    :root {
+        --font-size-display-lg: 1.75rem;
+        --font-size-display-sm: 0.9rem;
+        --font-size-btn: 1.1rem;
+    }
+    
+    .btn {
+        padding: 0.875rem;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .calculator {
+        padding: 0.75rem;
+    }
+    
+    .display-container {
+        min-height: 80px;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.75rem;
+    }
+    
+    :root {
+        --font-size-display-lg: 1.75rem;
+        --font-size-display-sm: 0.9rem;
+        --font-size-btn: 1.1rem;
+    }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+.btn:focus {
+    outline: 2px solid var(--btn-operator);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
