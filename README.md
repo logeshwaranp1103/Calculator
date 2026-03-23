@@ -158,10 +158,10 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Your Name**
+LOGESHWARAN P
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
+- GitHub: [@logeshwaranp1103](https://github.com/logeshwaranp1103)
+- LinkedIn: [LOGESHWARAN P](https://www.linkedin.com/in/logeshwaran--p)
 
 ## 🙏 Acknowledgments
 
